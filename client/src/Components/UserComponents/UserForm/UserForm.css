@@ -1,14 +1,12 @@
 .imgCat{
     width: auto;
-    height: 200px;
+    height: 180px;
+    border-radius: 30px;
+}
+.col{
     border-radius: 30px;
 }
 
-.col{
-    margin-top: 0%;
-    margin-left: 20px;
-    border-radius: 30px;
-}
 .card-body{
     color: aliceblue;
     border-radius: 30px;
@@ -23,4 +21,18 @@ ul{
 
 .dropdown{
     padding-left: 30px;
+    
+}
+.fa-shopping-cart{
+    font-size:25px;
+    text-align: center;
+}
+.promocion{
+    background-color: brown;
+    border-radius: 15px;
+    width: 40px;
+    text-align: center;
+    position: fixed;
+
+
 }

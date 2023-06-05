@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Login.css';
+import Swal from 'sweetalert2';
 
+export function LoginUser() {
 
-export function LoginUser(props) {
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
   const [userData, setUserData] = useState([]);
@@ -33,19 +34,24 @@ export function LoginUser(props) {
     );
 
     if (user) {
-      if (user.role === 'admin') {
+      if (user.role === 'admin' ) {
         // Redirect to admin page
         console.log('Admin login successful');
-        window.location.href=`http://localhost:3000/create`
+         window.location.href=`http://localhost:3000/create?username=` + encodeURIComponent(username);
+                
         
       } else if (user.role === '') {
         // Redirect to user page
-        window.location.href=`http://localhost:3000/inicio`
-       
+        window.location.href=`http://localhost:3000/?username=` + encodeURIComponent(username);      
         console.log('User login successful');
       }
     } else {
-      alert("Contraseña o usuario incorrecto");
+      Swal.fire({
+        title: 'Error!',
+        text: 'Usuario o contraseña incorrecta',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
     }
   };
   

@@ -6,11 +6,14 @@ import "./user.css";
 export function CatalogoUser() {
   return (
     <div className="inicio">
+    
     <NavbarUser />
+    <br/>
       <div className="form">
       
         <UserForm />
       </div>
+      <br/>
       <Footer/>
     </div>
   );

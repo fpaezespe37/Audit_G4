@@ -14,15 +14,15 @@ export function Mantenimiento() {
           <tr>
             <td>
               <h1>Objetivos</h1>
-              <h5>
+              <h4>
                 Entrega del producto en buen estado y con excelente actitud.
-              </h5>
-              <p>
+              </h4>
+              <h5>
                 Firmes defensores de que calidad y belleza no esta en el precio,
                 sino en el producto.
-              </p>
-              <h5>Exigentes en el cuidado de los arboles bonsái</h5>
-              <p>Llevamos un ambiente moderno y clasico</p>
+              </h5>
+              <h4>Exigentes en el cuidado de los arboles bonsái</h4>
+              <h5>Llevamos un ambiente moderno y clasico</h5>
             </td>
             <td>
               <div className="portada">

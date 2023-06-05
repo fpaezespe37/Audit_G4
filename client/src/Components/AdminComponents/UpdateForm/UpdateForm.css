@@ -1,20 +1,13 @@
-.blur{
-    border-radius: 30px;
-    backdrop-filter: blur(15px);
-    padding: 40px;
-    background-color: rgba(243, 236, 220, 0.5) !important;
-}
 
 .btn-naranja{
     background-color: #dab647;
 }
 
-.table{
-    border-radius: 10px;
-    background-color:black;
-}
-
 .imagenArbol{
     width: 100px;
     height: 100px;
+}
+
+.conatiner-blur{
+    background-color: aliceblue;
 }

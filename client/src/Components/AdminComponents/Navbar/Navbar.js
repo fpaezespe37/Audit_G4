@@ -1,8 +1,10 @@
+import { Dropdown } from "react-bootstrap";
 import "./Navbar.css";
-import Logo from '../../../Assets/logo.jpg'
+import Logo from "../../../Assets/logo.jpg";
 
 export function Navbar() {
-
+  const params = new URLSearchParams(window.location.search);
+  const user = params.get("username");
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-cream">
@@ -21,27 +23,21 @@ export function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link text-black" href="/create">
+                <a className="nav-link text-black" href={`/create?username=${user || ""}`}>
                   Crear
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-black" href="/update">
+                <a className="nav-link text-black" href={`/update?username=${user || ""}`}>
                   Actualizar promocion
                 </a>
               </li>
-             
-              {/* <li className="nav-item">
-                <a className="nav-link text-black" href="/update">
-                  Consultar
-                </a>
-              </li> */}
+
               <li className="nav-item">
-                <a className="nav-link text-black" href="/delete">
+                <a className="nav-link text-black" href={`/delete?username=${user || ""}`}>
                   Eliminar
                 </a>
               </li>
-              
             </ul>
           </div>
           <div className="dropdown ">
@@ -51,9 +47,25 @@ export function Navbar() {
               height={70}
               width={100}
               alt="MDB Logo"
-              loading="lazy"  
+              loading="lazy"
             />
           </div>
+          <Dropdown>
+            <Dropdown.Toggle variant="secondary">
+              <i className="fas fa-user-alt" /> <quote />
+              {user}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/micuenta">
+                {" "}
+                <i class="fas fa-sign-in-alt" /> Iniciar sesión
+              </Dropdown.Item>
+              <Dropdown.Item href="/">
+                {" "}
+                <i class="fas fa-sign-out-alt" /> Cerrar sesión
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </nav>
     </>

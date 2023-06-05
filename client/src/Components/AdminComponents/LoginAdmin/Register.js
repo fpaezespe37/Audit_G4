@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "./Login.css";
 
-
 export function Register() {
 
   const [nombre, setName] = useState('');
@@ -42,8 +41,8 @@ export function Register() {
       role,
       });
       console.log(response.data);
-      alert("Se ha registrado su datos correctamente");
-      window.location.href=`http://localhost:3000/`
+      alert("Se ha registrado su datos correctamente \n Ingrese sus datos a continuación");
+            window.location.href=`http://localhost:3000/micuenta`
     } catch (error) {
       console.error(error);
     }

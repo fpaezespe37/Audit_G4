@@ -2,9 +2,9 @@ import { NavbarUser } from "../../Components/UserComponents/UserForm/NavbarUser"
 import { Footer } from "../../Components/GeneralComponents/Footer/Footer";
 import "./user.css";
 import Foto1 from "../../Assets/bonsai1.png";
-import Foto2 from "../../Assets/bonsai2.png";
+import Foto2 from "../../Assets/inicio2foto.png";
 import Foto3 from "../../Assets/bonsai3.png";
-import Foto4 from "../../Assets/ecuabonsai.png";
+import Foto4 from "../../Assets/bonsai2.png";
 import Foto5 from "../../Assets/Fundador.jpg";
 
 export function Contacto() {
@@ -12,7 +12,8 @@ export function Contacto() {
     <div className="inicio">
       <NavbarUser />
       <br></br>
-      <h1> Bonsáis únicos en el Ecuador🎋</h1>
+      <br/>
+      <h3> Bonsáis únicos en el Ecuador🎋</h3>
       <br></br>
       <section className="menu">
         <div className="columna">
@@ -20,10 +21,10 @@ export function Contacto() {
             <img src={Foto1} alt="foto1" />
           </div>
           <div className="foto">
-            <img src={Foto2} alt="foto2" />
+            <img src={Foto3} alt="foto2" />
           </div>
           <div className="foto">
-            <img src={Foto3} alt="foto3" />
+            <img src={Foto2} alt="foto3" />
           </div>
         </div>
       </section>

@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import axios from "axios";
 
-
-
 export const getProductos = async () => {
   try {
     const response = await axios.get(`http://localhost:5000/producto`);
@@ -15,39 +13,44 @@ export const getProductos = async () => {
   }
 };
 
-export const getPromocion = async () => {
-  try {
-    const response = await axios.get(`http://localhost:5000/promotion`);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export function UpdateForm() {
-  const [data, setData] = useState([
-    {
-      id: "",
-      producto: "",
-      descripcion: "",
-      promocion: "",
-    },
-  ]);
+
+  const [promos, setPromos] = useState([]);
+  useEffect(() => {
+    
+    async function getPromos() {
+      var promos = [];
+      let aux = (await axios.get("http://localhost:5000/promotion")).data;
+      for (let i = 0; i < aux.length; i++) {
+        var promo = aux[i].descuento;
+        if (promo !== 'ninguna') {
+          promos.push(<option>{promo}</option>);
+        } else {
+          promos.push(<option value=""></option>);
+        }
+      }
+      setPromos(promos);
+    }
+       getPromos();
+  }, []);
+
+ 
 
   const [modalEditar, setModalEditar] = useState(false);
-  const [modalEliminar, setModalEliminar] = useState(false);
   const [bonsaiSeleccionado, setBonsaiSeleccionado] = useState({
-    id: "",
-    producto: "",
+    _id: "",
+    tipo: "",
     descripcion: "",
-    foto: "",
+    image: "",
     promocion: "",
   });
 
   const seleccionarBonsai = (elemento, caso) => {
+      setBonsaiSeleccionado(elemento)
     setBonsaiSeleccionado(elemento);
-    caso === "Editar" ? setModalEditar(true) : setModalEliminar(true);
+    setModalEditar(true);
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setBonsaiSeleccionado((prevState) => ({
@@ -56,18 +59,32 @@ export function UpdateForm() {
     }));
   };
 
-  const editar = () => {
-    catalogos.map((bonsai) => {
-      if (bonsai._id === bonsaiSeleccionado._id) {
-        bonsai.especie = bonsaiSeleccionado.especie;
-        bonsai.descripcion = bonsaiSeleccionado.descripcion;
-        bonsai.promocion = bonsaiSeleccionado.promocion;
-      }
-    });
-    setCatalogos(catalogos);
-    setModalEditar(false);
-    axios.put("http://localhost:5000/producto", {});
+
+   const editar = async () => {
+    const updatedProducto = {
+      tipo: bonsaiSeleccionado.tipo,
+      descripcion: bonsaiSeleccionado.descripcion,
+      promocion: bonsaiSeleccionado.promocion
+    };
+    try {
+      await axios.put(`http://localhost:5000/producto/${bonsaiSeleccionado._id}`, updatedProducto);
+    
+      catalogos.map((bonsai) => {
+        if (bonsai._id === bonsaiSeleccionado._id) {
+          bonsai.tipo = bonsaiSeleccionado.tipo;
+          bonsai.descripcion = bonsaiSeleccionado.descripcion;
+          bonsai.promocion = bonsaiSeleccionado.promocion;
+         
+        }
+      return null;
+      }); 
+      setCatalogos(catalogos);
+      setModalEditar(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  
 
   const [catalogos, setCatalogos] = useState([]);
 
@@ -81,26 +98,30 @@ export function UpdateForm() {
   };
 
   return (
-    <div className="container">
-      <div className="blur">
-        <h2 className="tittle"></h2>
+    <div className="container blur">
+      
+        <h2 className="tittle">Actualizar </h2>
         <br />
-        <table className="table table-striped ">
-          <thead>
+        <table className="table table-color">
+          <thead >
             <tr>
-              <th>ID</th>
-              <th>Producto</th>
-              <th>Descripcion</th>
-              <th>Promocion</th>
-              <th>Acciones</th>
+              <th  scope="col">ID</th>
+              <th  scope="col">Producto</th>
+              <th  scope="col">Imagen</th>
+              <th  scope="col">Descripción</th>
+              <th  scope="col">Precio</th>
+              <th scope="col">Promoción</th>
+              <th  scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {catalogos.map((elemento) => (
               <tr>
                 <td>{elemento._id}</td>
-                <td>{elemento.especie}</td>
+                <td>{elemento.tipo}</td>
+                <td><img className="imagenArbol" src={`http://localhost:5000/${elemento.image}`} alt="arbolimagen"></img></td>
                 <td>{elemento.descripcion}</td>
+                <td>${elemento.precio}</td>
                 <td>{elemento.promocion}</td>
                 <td>
                   <button
@@ -114,7 +135,7 @@ export function UpdateForm() {
             ))}
           </tbody>
         </table>
-      </div>
+      
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>
@@ -138,7 +159,7 @@ export function UpdateForm() {
               className="form-control"
               type="text"
               name="especie"
-              value={bonsaiSeleccionado && bonsaiSeleccionado.especie}
+              value={bonsaiSeleccionado && bonsaiSeleccionado.tipo}
               onChange={handleChange}
             />
             <br />
@@ -162,15 +183,7 @@ export function UpdateForm() {
               value={bonsaiSeleccionado && bonsaiSeleccionado.promocion}
               onChange={handleChange}
             >
-              <option value="10%" selected="true" id="select-1661659027080-0">
-                10%
-              </option>
-              <option value="25%" id="select-1661659027080-1">
-                25%
-              </option>
-              <option value="50%" id="select-1661659027080-2">
-                50%
-              </option>
+              {promos}
             </select>
 
             <br />
