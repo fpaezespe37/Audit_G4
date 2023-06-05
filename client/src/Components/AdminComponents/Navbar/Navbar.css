@@ -1,0 +1,16 @@
+.bg-cream{
+    background-color: #f3ecdc;
+}
+
+.text-black{
+    color: black;
+    font-weight: bold;
+}
+
+.nav-link{
+    color: black;
+}
+
+.rounded-3{
+    border-radius: 5px ;
+}

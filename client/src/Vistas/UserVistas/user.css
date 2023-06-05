@@ -1,0 +1,178 @@
+.text-left {
+  width: auto;
+  height: 650px;
+}
+
+.inicio {
+  text-align: center;
+  background-image: url("../../Assets/images.jpeg");
+  color: rgb(245, 245, 245);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.94;
+}
+
+.portada {
+  position: relative;
+  flex-basis: 20%;
+
+  margin-bottom: 5%;
+}
+.portada img{
+  width: 500px;
+  height: 400px;
+  border-radius: 15px;
+}
+.portada img:hover {
+  transform: scale(1.1);
+}
+
+
+.eslogan {
+  padding-top: 50px;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  position: absolute;
+  left: 20px;
+}
+
+/*Footer*/
+.footer1 {
+  background: #f3ecdc;
+  padding: 30px;
+}
+
+.footer-p {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  font-weight: bold;
+}
+.twitter a:hover {
+  color: #2666cf;
+}
+.youtube a:hover {
+  color: rgb(165, 42, 134);
+}
+.github a:hover {
+  color: rgb(25, 2, 36);
+}
+.socialmedia a {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: 0.5s;
+}
+.main {
+  width: 100%;
+  height: 100%;
+}
+.form1 {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(4, 9, 30, 0.7));
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: aliceblue;
+  margin-bottom: 25px;
+  margin-top: 20px;
+  font-weight: 650;
+  font-size: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.form2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(4, 9, 30, 0.7));
+  color: aliceblue;
+  padding-bottom: 20px;
+}
+.form2 img {
+  width: 400px;
+  height: 350px;
+}
+
+.localizacion,
+.principio {
+  width: 80%;
+  margin: auto;
+  padding: 40px 0;
+}
+.localizacion iframe {
+  width: 100%;
+}
+.oracion div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.oracion div i {
+  font-size: 20px;
+  color: black;
+  margin: 10px;
+  margin-right: 45px;
+}
+.menu h1 {
+  width: 80%;
+  text-align: left;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  font-size: 30px;
+}
+
+.foto {
+  flex-basis: 30%;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  position: relative;
+}
+.foto img {
+  width: 100%;
+  border-radius: 20px;
+  transition: all 300ms;
+  position: relative;
+}
+.foto img:hover {
+  transform: scale(1.05);
+}
+
+.Ecuabonsai img{
+  width: 400px;
+  height: 400px;
+  border-radius: 30px;
+  transition: all 300ms;
+  position: relative;
+}
+.Ecuabonsai img:hover{
+  transform: scale(1.05);
+}
+
+.parrafo{
+  width: 800px;
+  text-align: center;
+  margin: 0px auto;
+}
+.columna {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.registerPropaganda{
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  text-align: center;
+}
+.register{
+  position: relative;
+  bottom: 40px;
+}
+
